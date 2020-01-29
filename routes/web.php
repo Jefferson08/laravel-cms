@@ -19,8 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::namespace('Admin')->prefix('painel')->group(function () {
+Route::namespace('Admin')->prefix('painel')->name('painel.')->group(function () {
     
-    Route::get('/', 'HomeController@index')->name('painel');
+    Route::get('/', 'HomeController@index')->name('index');
+
+    Route::resource('users', 'UsersController');
 
 });

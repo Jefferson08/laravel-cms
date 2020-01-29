@@ -9,21 +9,22 @@
 @section('content')
 <div class="card">
     <div class="card-body">
-        <table class="table table-bordered table-hover">
-            <tbody>
+        <table class="table table-hover">
+            <thead>
                 <tr>
-                    <th style="width: 10px">#</th>
+                    <th style="width: 20px">ID</th>
                     <th>Nome</th>
                     <th>Email</th>
                     <th>Ações</th>
                 </tr>
-            
+            </thead>
+            <tbody>
                 @foreach ($users as $user)
                 <tr>
-                    <td>{{$user->id}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>
+                    <td style="vertical-align: middle;">{{$user->id}}</td>
+                    <td style="vertical-align: middle;">{{$user->name}}</td>
+                    <td style="vertical-align: middle;">{{$user->email}}</td>
+                    <td style="vertical-align: middle;">
                         <div class="row" style="margin: 0;">
                             <a class="btn btn-info" href="{{ route('painel.users.edit', $user)}}"><i class="fa fa-edit"></i>  Editar</a>
                             <form method="POST" action="{{ route('painel.users.destroy', $user)}}">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 use App\User;
 
@@ -15,6 +16,7 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:edit-users');
     }
 
     /**
@@ -140,6 +142,10 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
+        if ($user == Auth::user()) {
+            return redirect()->route('panel.users.index');
+        } 
+        
         $user->delete();
         return redirect()->route('painel.users.index');
     }

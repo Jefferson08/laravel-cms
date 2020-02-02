@@ -27,11 +27,13 @@
                     <td style="vertical-align: middle;">
                         <div class="row" style="margin: 0;">
                             <a class="btn btn-info" href="{{ route('painel.users.edit', $user)}}"><i class="fa fa-edit"></i>  Editar</a>
+                            @if ($user != Auth::user())
                             <form method="POST" action="{{ route('painel.users.destroy', $user)}}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit" onclick="return confirm('Deseja realmente excluir o usuário {{$user->name}} ?')" style="margin-left: 10px;"><i class="fa fa-user-times"></i>  Excluir</button>
                             </form>
+                            @endif
                         </div>
                     </td>
                   </tr>

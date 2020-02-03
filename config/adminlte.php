@@ -204,6 +204,11 @@ return [
             'url'  => 'painel/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
+        [
+            'text' => 'Configurações do site',
+            'url'  => 'painel/settings',
+            'icon' => 'fas fa-fw fa-file',
+        ],
         ['header' => 'labels'],
         [
             'text'       => 'important',

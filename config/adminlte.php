@@ -201,7 +201,7 @@ return [
         ['header' => 'account_settings'],
         [
             'text' => 'profile',
-            'url'  => 'admin/settings',
+            'url'  => 'painel/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
         ['header' => 'labels'],

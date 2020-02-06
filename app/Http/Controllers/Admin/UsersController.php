@@ -73,7 +73,7 @@ class UsersController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        return redirect()->route('painel.users.index');
+        return redirect()->route('painel.users.index')->with('success', 'Usuário criado com sucesso!!!');
     }
 
     /**
@@ -131,7 +131,7 @@ class UsersController extends Controller
 
         $user->save();
 
-        return redirect()->route('painel.users.index');
+        return redirect()->route('painel.users.index')->with('success', 'Usuário editado com sucesso!!!');
     }
 
     /**
@@ -147,6 +147,6 @@ class UsersController extends Controller
         } 
         
         $user->delete();
-        return redirect()->route('painel.users.index');
+        return redirect()->route('painel.users.index')->with('success', 'Usuário excluído com sucesso!!!');
     }
 }

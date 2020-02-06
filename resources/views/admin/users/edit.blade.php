@@ -7,18 +7,15 @@
 
 @section('content')
 
-<div class="card card-primary">
-
-    @if ($errors->any())
-    <ul>
-    @foreach ($errors as $error)
-         <li>$error</li>
-    @endforeach
-    </ul>
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <h5><i class="icon fas fa-ban"></i>Erro</h5>
+    Verifique os dados
+  </div>
 @endif
 
-    
-
+<div class="card card-primary">
     <!-- form start -->
     <form role="form" method="POST" action="{{ route('painel.users.update', $user)}}">
       @csrf

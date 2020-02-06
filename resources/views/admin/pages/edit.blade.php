@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
           <label for="body">Corpo:</label>
-          <textarea name="body" class="form-control @error('body') is-invalid @enderror" placeholder="Digite o corpo" cols="30" rows="10">{{$page->body}}</textarea>
+          <textarea name="body" class="form-control bodyfield @error('body') is-invalid @enderror" placeholder="Digite o corpo" cols="30" rows="10">{{$page->body}}</textarea>
           @error('body')
           <p class="text-danger">{{$message}}</p>
           @enderror
@@ -47,4 +47,16 @@
       </div>
     </form>
   </div>
+
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+  <script>
+    tinymce.init({
+      selector:'textarea.bodyfield',
+      height:300,
+      menubar:false,
+      plugins:['link', 'table', 'image', 'autoresize', 'lists'],
+      toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | table | link image | bullist numlist'
+    });
+  </script>
 @endsection

@@ -1,5 +1,7 @@
 @extends('adminlte::page')
 
+@section('title', 'Editar página')
+
 @section('content_header')
     <h1>Editar página</h1>
     <hr>
@@ -56,7 +58,13 @@
       height:300,
       menubar:false,
       plugins:['link', 'table', 'image', 'autoresize', 'lists'],
-      toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | table | link image | bullist numlist'
+      toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | table | link image | bullist numlist',
+      content_css:[
+        '{{asset('assets/css/content.css')}}'
+      ],
+      images_upload_url:'{{route('image_upload')}}',
+      images_upload_credentials:true,
+      convert_urls: false
     });
   </script>
 @endsection

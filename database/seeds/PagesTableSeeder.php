@@ -13,9 +13,15 @@ class PagesTableSeeder extends Seeder
     public function run()
     {
         Page::create([
-            'title' => 'Title Example',
-            'slug' => 'title-slug-example',
-            'body' => 'Page body text example'
+            'title' => 'Page Example 1',
+            'slug' => 'page-example-1',
+            'body' => 'Page 1 body text example'
+        ]);
+
+        Page::create([
+            'title' => 'Page Example 2',
+            'slug' => 'page-example-2',
+            'body' => 'Page 2 body text example'
         ]);
     }
 }

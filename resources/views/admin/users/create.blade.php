@@ -1,5 +1,7 @@
 @extends('adminlte::page')
 
+@section('title', 'Adicionar usuário')
+
 @section('content_header')
     <h1>Adicionar Usuário</h1>
     <hr>

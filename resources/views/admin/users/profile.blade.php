@@ -2,7 +2,6 @@
 
 @section('title', 'Meu perfil')
 
-
 @section('content_header')
     <h1>Editar Perfil</h1>
     <hr>

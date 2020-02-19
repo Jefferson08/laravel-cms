@@ -1,5 +1,7 @@
 @extends('adminlte::page')
 
+@section('title', 'Editar usuário')
+
 @section('content_header')
     <h1>Editar Usuário - {{$user->name}}</h1>
     <hr>

@@ -1,5 +1,7 @@
 @extends('adminlte::page')
 
+@section('title', 'Configurações')
+
 @section('content_header')
     <h1>Configurações gerais do site</h1>
     <hr>

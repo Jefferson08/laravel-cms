@@ -184,6 +184,13 @@ return [
             'can'  => 'manage-blog',
         ],
         [
+            'text'        => 'Dashboard',
+            'url'         => 'painel',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => null,
+            'label_color' => 'success',
+        ],
+        [
             'text'        => 'Minhas páginas',
             'url'         => 'painel/pages',
             'icon'        => 'far fa-fw fa-file',

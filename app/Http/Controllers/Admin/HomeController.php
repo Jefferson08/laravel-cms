@@ -51,6 +51,22 @@ class HomeController extends Controller
         $pagePieValues = json_encode( array_values($page_pie));
         $pagePieColors = json_encode( array_values($pagePieColors));
 
+        $page_line = [];
+
+        for ($i=0; $i < 6; $i++) { 
+            
+            $line_date = date('Y-m-d H:i:s', strtotime('-'.$i.' months'));
+
+            $page_line[date('F', strtotime($line_date))] = Visitor::whereMonth('date_access', date('m', strtotime($line_date)))
+            ->whereYear('date_access', date('Y', strtotime($line_date)))
+            ->count();
+        }
+
+        $pageLineLabels = json_encode( array_keys($page_line));
+        $pageLineValues = json_encode( array_values($page_line));
+
+        //dd($pageLineLabels, $pageLineValues);
+
         $data = [
             'visitors_count' => Visitor::where('date_access', '>=', $date_limit)->count(),
             'online_count' => count($online_list),
@@ -59,6 +75,8 @@ class HomeController extends Controller
             'pagePieLabels' => $pagePieLabels,
             'pagePieValues' => $pagePieValues,
             'pagePieColors' => $pagePieColors,
+            'pageLineLabels' => $pageLineLabels,
+            'pageLineValues' => $pageLineValues,
             'date_interval' => $date_interval
         ];
 

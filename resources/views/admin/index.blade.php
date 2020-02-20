@@ -62,7 +62,7 @@
                   <p>Páginas</p>
                 </div>
                 <div class="icon">
-                  <i class="fa fa-file"></i>
+                  <i class="fa fa-copy"></i>
                 </div>
             </div>
         </div>
@@ -84,7 +84,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Páginas mais visitadas</h3>
+                    <h3 class="card-title">Acessos por página</h3>
                 </div>
 
                 <div class="card-body">
@@ -96,11 +96,11 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Páginas mais visitadas</h3>
+                    <h3 class="card-title">Acessos nos últimos 6 meses</h3>
                 </div>
 
                 <div class="card-body">
-                    teste
+                    <canvas id="pageLine"></canvas>
                 </div>
             </div>
         </div>
@@ -110,6 +110,7 @@
 <script>
     window.onload = function(){
         var ctx = document.getElementById('pagePie').getContext('2d');
+        var ctx2 = document.getElementById('pageLine').getContext('2d');
 
         var pagePieData = {
             labels: {!! $pagePieLabels !!},
@@ -124,6 +125,28 @@
         var pagePie = new Chart(ctx, {
             type: 'pie',
             data: pagePieData
+        });
+
+        var linePageData = {
+            labels  : {!! $pageLineLabels !!},
+            datasets: [
+                {
+                label               : 'Total de acessos',
+                backgroundColor     : 'rgba(60,141,188,0.9)',
+                borderColor         : 'rgba(60,141,188,0.8)',
+                pointRadius          : false,
+                pointColor          : '#3b8bba',
+                pointStrokeColor    : 'rgba(60,141,188,1)',
+                pointHighlightFill  : '#fff',
+                pointHighlightStroke: 'rgba(60,141,188,1)',
+                data                : {!! $pageLineValues !!}
+                },
+            ]
+        }
+
+        var pageLine = new Chart(ctx2, {
+            type: 'line',
+            data: linePageData
         });
     }
 </script>

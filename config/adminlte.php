@@ -186,21 +186,21 @@ return [
         [
             'text'        => 'Dashboard',
             'url'         => 'painel',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'far fa fa-database',
             'label'       => null,
             'label_color' => 'success',
         ],
         [
             'text'        => 'Minhas páginas',
             'url'         => 'painel/pages',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'far fa fa-copy',
             'label'       => null,
             'label_color' => 'success',
         ],
         [
             'text'        => 'Meus Usuários',
             'url'         => 'painel/users',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'far fa fa-users',
             'label'       => null,
             'label_color' => 'success',
             'can'         => 'edit-users'  
@@ -209,12 +209,12 @@ return [
         [
             'text' => 'profile',
             'url'  => 'painel/profile',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa fa-user',
         ],
         [
             'text' => 'Configurações do site',
             'url'  => 'painel/settings',
-            'icon' => 'fas fa-fw fa-file',
+            'icon' => 'fas fa fa-cog',
         ],
         ['header' => 'labels'],
         [

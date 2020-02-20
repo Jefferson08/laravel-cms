@@ -7,13 +7,35 @@
 @section('content_header')
     
 <div class="container">
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <form action="">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text bg-info"><i class="fas fa-clock"></i></span>
+                    </div>
+                    <select name="date_interval" class="form-control" onchange="this.form.submit()">
+                        <option value="30" {{$date_interval==30 ? 'selected="selected"' : ''}}>Últimos 30 dias</option>
+                        <option value="60" {{$date_interval==60 ? 'selected="selected"' : ''}}>Últimos 2 meses</option>
+                        <option value="90" {{$date_interval==90 ? 'selected="selected"' : ''}}>Últimos 3 meses</option>
+                        <option value="180" {{$date_interval==180 ? 'selected="selected"' : ''}}>Últimos 6 meses</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+
+        
+    </div>
+
     <div class="row">
         <div class="col-md-3">
             <div class="small-box bg-info">
                 <div class="inner">
                   <h3>{{$visitors_count}}</h3>
     
-                  <p>Visitas</p>
+                  <p>Total de acessos</p>
                 </div>
                 <div class="icon">
                   <i class="fa fa-eye"></i>
@@ -28,7 +50,7 @@
                   <p>Usuários online</p>
                 </div>
                 <div class="icon">
-                  <i class="fa fa-heart"></i>
+                  <i class="fa fa-users"></i>
                 </div>
             </div>
         </div>

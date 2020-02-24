@@ -205,7 +205,10 @@ return [
             'label_color' => 'success',
             'can'         => 'edit-users'  
         ],
-        ['header' => 'account_settings'],
+        [
+            'header' => 'account_settings',
+            'can'    => 'is-admin'
+        ],
         [
             'text' => 'profile',
             'url'  => 'painel/profile',
@@ -215,6 +218,7 @@ return [
             'text' => 'Configurações do site',
             'url'  => 'painel/settings',
             'icon' => 'fas fa fa-cog',
+            'can'  => 'id-admin'
         ],
         ['header' => 'labels'],
         [

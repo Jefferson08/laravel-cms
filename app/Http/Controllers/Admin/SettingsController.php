@@ -12,19 +12,12 @@ class SettingsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('can:edit-users');
     }
 
     public function index()
     {
-        $settings = Setting::get();
-
-        $formatted_settings = [];
-
-        foreach ($settings as $setting) {
-            $formatted_settings[$setting['name']] = $setting['content'];
-        }
-
-        return view('admin.pages.config')->with('settings', $formatted_settings);
+        return view('admin.pages.config');
     }
 
     public function save(Request $request)
@@ -32,9 +25,12 @@ class SettingsController extends Controller
         $data = $request->only([
             'title',
             'subtitle',
+            'description',
+            'address',
+            'phone',
             'email',
             'bg_color',
-            'text_color'
+            'header_color'
         ]);
 
         $validator = $this->validator($data);
@@ -59,9 +55,12 @@ class SettingsController extends Controller
         return Validator::make($data, [
             'title' => ['required', 'string', 'max:100'],
             'subtitle' => ['required', 'string', 'max:100'],
+            'description' => ['required', 'string', 'max:600'],
+            'address' => ['required', 'string', 'max:100'],
+            'phone' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'text_color' => ['required', 'regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/i'],
-            'text_color' => ['required', 'regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/i']
+            'bg_color' => ['required', 'regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/i'],
+            'header_color' => ['required', 'regex:/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/i']
         ]);
     }
 }

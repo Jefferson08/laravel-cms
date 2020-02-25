@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-
+use App\Page;
+use App\Setting;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Support\Facades\Gate;
-use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,12 +25,27 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Dispatcher $events)
+    public function boot()
     {
-        $events->listen(BuildingMenu::class, function (BuildingMenu $event) {
-            if(Gate::allows('edit-users')){
-                $event->menu->menu[3]["text"] = 'Teste';
-            }
-        });
+        $settings = Setting::get();
+
+        $formatted_settings = [];
+
+        foreach ($settings as $setting) {
+            $formatted_settings[$setting['name']] = $setting['content'];
+        }
+
+        $menu = [
+            '/' => 'home'
+        ];
+
+        $pages = Page::all();
+
+        foreach($pages as $page){
+            $menu[$page['slug']] = $page['title'];
+        }
+        
+        View::share('settings', $formatted_settings);
+        View::share('menu', $menu);
     }
 }

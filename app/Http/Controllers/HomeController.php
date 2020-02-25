@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Page;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $data = [];
+
+        $pages = Page::all();
+
+        $data['pages'] = $pages;
+
+        return view('home')->with($data);
+    }
+
+    public function contact()
+    {
+        return view('contact');
     }
 }

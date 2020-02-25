@@ -207,7 +207,7 @@ return [
         ],
         [
             'header' => 'account_settings',
-            'can'    => 'is-admin'
+            'can'    => 'edit-users'
         ],
         [
             'text' => 'profile',
@@ -218,20 +218,7 @@ return [
             'text' => 'Configurações do site',
             'url'  => 'painel/settings',
             'icon' => 'fas fa fa-cog',
-            'can'  => 'id-admin'
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'aqua',
+            'can'  => 'edit-users'
         ],
     ],
 

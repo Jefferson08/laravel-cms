@@ -31,6 +31,13 @@
             @enderror
         </div>
         <div class="form-group">
+          <label for="description">Descrição:</label>
+          <input type="text" name="description" maxlength="255" class="form-control @error('description') is-invalid @enderror"  value="{{old('description')}}" placeholder="Digite a descrição da página">
+          @error('description')
+          <p class="text-danger">{{$message}}</p>
+          @enderror
+        </div>
+        <div class="form-group">
           <label for="body">Corpo:</label>
           <textarea name="body" class="form-control bodyfield @error('body') is-invalid @enderror" value="{{old('body')}}" placeholder="Digite o corpo" cols="30" rows="10"></textarea>
           @error('body')

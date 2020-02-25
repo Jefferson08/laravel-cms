@@ -8,7 +8,7 @@ class Page extends Model
 {
 
     protected $fillable = [
-        'title', 'slug', 'body',
+        'title', 'slug', 'body', 'description'
     ];
 
     public $timestamps = false;

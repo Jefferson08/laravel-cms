@@ -37,11 +37,13 @@
                         <div class="row" style="margin: 0;">
                             <a class="btn btn-success" href=""><i class="fa fa-eye"></i>  Ver</a>
                             <a class="btn btn-info" href="{{ route('painel.pages.edit', $page)}}" style="margin-left:10px;"><i class="fa fa-edit"></i>  Editar</a>
+                            @can('edit-users')
                             <form method="POST" action="{{ route('painel.pages.destroy', $page)}}">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit" onclick="return confirm('Deseja realmente excluir a página {{$page->title}} ?')" style="margin-left: 10px;"><i class="fa fa-user-times"></i>  Excluir</button>
                             </form>
+                            @endcan
                         </div>
                     </td>
                   </tr>

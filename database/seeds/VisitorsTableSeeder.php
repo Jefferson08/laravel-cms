@@ -12,6 +12,9 @@ class VisitorsTableSeeder extends Seeder
      */
     public function run()
     {
+
+        Visitor::truncate();
+
         Visitor::create([
             'page' => 'page-example-1',
             'ip' => '111.111.111.111',

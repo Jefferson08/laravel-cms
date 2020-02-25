@@ -2,7 +2,9 @@
 
 @section('content')
 
-<section class="hero-banner mb-30px">
+@section('title', $settings['title'])
+
+<section class="hero-banner mb-30px" style="background: {{$settings['bg_color']}}">
 <div class="container">
     <div class="row">
     <div class="col-lg-7">
@@ -12,8 +14,8 @@
     </div>
     <div class="col-lg-5 pt-5">
         <div class="hero-banner__content">
-        <h1>Advanced software made simple</h1>
-        <p>Vel aliquam quis, nulla pede mi commodo tristique nam hac Luctun torquent velit felis commodo pellentesque nulla cras vel aliqua quisan nulla pede mi commoda</p>
+        <h1>{{$settings['title']}}</h1>
+        <p>{{$settings['subtitle']}}</p>
         <a class="button bg" href="#">Get Started</a>
         </div>
     </div>
@@ -27,7 +29,7 @@
     <div class="section-intro pb-85px text-center">
     <h2 class="section-intro__title">About Us</h2>
     <hr>
-    <p class="section-intro__subtitle">Vel aliquam quis, nulla pede mi commodo tristique nam hac. Luctus torquent velit felis commodo pellentesque nulla cras. Tincidunt hacvel alivquam quis nulla pede mi commodo tristique nam hac  luctus torquent</p>
+    <p class="section-intro__subtitle">{{$settings['description']}}</p>
     </div>
 
     <div class="section-intro text-center">
@@ -36,37 +38,41 @@
     </div>
 
     <div class="container">
-    <div class="row">
-        <div class="col-lg-4">
-        <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
-            <span class="card-feature__icon">
-            <i class="ti-arrow-top-right"></i>
-            </span>
-            <h3 class="card-feature__title">Unique Design</h3>
-            <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
 
-            <a class="button button-light text-center" href="" style="margin-top: 20px;">Read more</a>
-        </div>
-        </div>
-        <div class="col-lg-4">
-        <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
-            <span class="card-feature__icon">
-            <i class="ti-mouse-alt"></i>
-            </span>
-            <h3 class="card-feature__title">Business Solution</h3>
-            <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
-        </div>
-        </div>
-        <div class="col-lg-4">
-        <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
-            <span class="card-feature__icon">
-            <i class="ti-headphone-alt"></i>
-            </span>
-            <h3 class="card-feature__title">Customer Support</h3>
-            <p class="card-feature__subtitle">Molestie lorem est faucibus faucibus erat phasellus placerat proin aptent</p>
-        </div>
-        </div>
-    </div>
+        @php
+            $count = 0;
+        @endphp
+
+        @foreach ($pages as $page)
+            @if ($count == 0)
+            <div class="row justify-content-center" style="margin-bottom: 30px;">
+            @endif
+
+            <div class="col-lg-4">
+            <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
+                <span class="card-feature__icon">
+                <a href="{{$page['slug']}}"><i class="ti-arrow-top-right"></i></a>
+                </span>
+                <h3 class="card-feature__title">{{ $page['title'] }}</h3>
+                <p class="card-feature__subtitle" style="height: 100px; overflow: hidden;">{{ $page['description']}}</p>
+    
+                <a class="button button-light text-center" href="{{$page['slug']}}" style="margin-top: 20px;">Read more</a>
+            </div>
+            </div>
+
+            @php
+                $count += 1;
+            @endphp
+
+            @if ($count == 3)
+                </div>
+                @php
+                    $count = 0;
+                @endphp   
+            @endif
+
+        @endforeach
+    
     </div>
 </div>
 </section>

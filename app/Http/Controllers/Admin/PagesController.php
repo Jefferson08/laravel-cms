@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -42,6 +43,7 @@ class PagesController extends Controller
     {
         $data = $request->only([
             'title',
+            'description',
             'body'
         ]);
 
@@ -49,6 +51,7 @@ class PagesController extends Controller
 
         $validator = Validator::make($data, [
             'title' => ['required', 'string', 'max:100'],
+            'description' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:100', 'unique:pages'],
             'body' => ['required', 'string']
         ]);
@@ -94,6 +97,7 @@ class PagesController extends Controller
     {
         $data = $request->only([
             'title',
+            'description',
             'body'
         ]);
 
@@ -101,6 +105,7 @@ class PagesController extends Controller
 
         $validator = Validator::make($data, [
             'title' => ['required', 'string', 'max:100'],
+            'description' => ['required', 'string', 'max:255'],
             'slug' => ['required', 'string', 'max:100', Rule::unique('pages')->ignore($page->id)],
             'body' => ['required', 'string']
         ]);
@@ -125,7 +130,11 @@ class PagesController extends Controller
      */
     public function destroy(Page $page)
     {
-        $page->delete();
-        return redirect()->route('painel.pages.index')->with('success', 'Página excluída com sucesso!!!');
+        if(Gate::allows('edit-users')){
+            $page->delete();
+            return redirect()->route('painel.pages.index')->with('success', 'Página excluída com sucesso!!!');
+        }
+
+        return redirect()->route('painel.pages.index');
     }
 }

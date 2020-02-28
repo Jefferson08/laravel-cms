@@ -41,11 +41,11 @@ class SettingsTableSeeder extends Seeder
             ],
             [
                 'name' => 'bg_color',
-                'content' => '#20ff0f'
+                'content' => '#110e25'
             ],
             [
                 'name' => 'header_color',
-                'content' => '#006bf3'
+                'content' => '#2a197f'
             ]
         ]);
     }

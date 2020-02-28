@@ -1,8 +1,10 @@
 /node_modules
 /public/hot
 /public/storage
-/public/media/images/**
-!/public/media/images/.gitkeep
+/public/media/images/*
+!/public/media/images/profile
+/public/media/images/profile/*
+!/public/media/images/profile/default.png
 /storage/*.key
 /vendor
 .env

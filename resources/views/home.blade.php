@@ -16,7 +16,7 @@
         <div class="hero-banner__content">
         <h1>{{$settings['title']}}</h1>
         <p>{{$settings['subtitle']}}</p>
-        <a class="button bg" href="#">Get Started</a>
+        <a class="button bg" href="{{ route('contact')}}">Contact Us -></a>
         </div>
     </div>
     </div>
@@ -194,5 +194,4 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </div>
 </footer>
 <!-- ================ End footer Area ================= -->
-
 @endsection

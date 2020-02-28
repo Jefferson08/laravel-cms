@@ -7,6 +7,8 @@
     <hr>
 @endsection
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 @section('content')
 
 @if (session('success'))
@@ -47,6 +49,23 @@
           <p class="text-danger">{{$message}}</p>
           @enderror
         </div>
+        
+        <div class="form-group">
+          <div class="row">
+            <div class="col-sm-4">
+              <label for="profile_photo">Foto de perfil:</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-4">
+              <img src="{{url('/media/images/profile')."/".$user->profile_photo}}" id="profile_thumb" style="max-width: 120; max-height: 120">
+            </div>
+          </div>
+          <div class="custom-file mt-3 mb-3">
+            <input type="file" class="custom-file-input" id="profile_photo" onchange="uploadProfile({{$user->id}}, this.files[0])">
+            <label class="custom-file-label selected" for="profile_photo"></label>
+          </div>
+        </div>
         <div class="form-group">
           <label for="password">Senha:</label>
           <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{old('password')}}" placeholder="Senha">
@@ -66,4 +85,8 @@
       </div>
     </form>
   </div>
+
+  @section('js')
+    <script src="{{asset('assets/js/ajax.js')}}"></script>
+  @stop
 @endsection

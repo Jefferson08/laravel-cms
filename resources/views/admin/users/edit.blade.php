@@ -57,4 +57,6 @@
       </div>
     </form>
   </div>
+
+  <script src="{{asset('assets/js/ajax.js')}}"></script>
 @endsection

@@ -67,6 +67,13 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="about">Sobre mim:</label>
+          <textarea name="about" cols="20" rows="5" maxlength="255" class="form-control @error('about') is-invalid @enderror" placeholder="Escreva sobre você">{{ $user->about}}</textarea>
+          @error('about')
+          <p class="text-danger">{{$message}}</p>
+          @enderror
+        </div>
+        <div class="form-group">
           <label for="password">Senha:</label>
           <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{old('password')}}" placeholder="Senha">
           @error('password')

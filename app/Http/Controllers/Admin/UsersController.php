@@ -114,11 +114,16 @@ class UsersController extends Controller
             'password_confirmation'
         ]);
 
-        $validator = Validator::make($data, [
+        $validation = [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)]
+        ];
+
+        if($data['password']){
+            $validation['password'] = ['required', 'string', 'min:8', 'confirmed'];
+        }
+
+        $validator = Validator::make($data, $validation);
 
         if($validator->fails()){
             return redirect()->route('painel.users.edit', $user)

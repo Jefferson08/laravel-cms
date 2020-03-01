@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Page;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -28,8 +29,10 @@ class HomeController extends Controller
         $data = [];
 
         $pages = Page::all();
+        $users = User::all();
 
         $data['pages'] = $pages;
+        $data['users'] = $users;
 
         return view('home')->with($data);
     }

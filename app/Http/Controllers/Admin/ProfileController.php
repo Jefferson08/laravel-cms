@@ -28,15 +28,22 @@ class ProfileController extends Controller
         $data = $request->only([
             'name',
             'email',
+            'about',
             'password',
             'password_confirmation'
         ]);
 
-        $validator = Validator::make($data, [
+        $validation = [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+            'about' => ['required', 'string', 'max:255'],
+        ];
+
+        if($data['password']){
+            $validation['password'] = ['required', 'string', 'min:8', 'confirmed'];
+        }
+
+        $validator = Validator::make($data, $validation);
 
         if($validator->fails()){
             return redirect()->route('painel.profile', $user)
@@ -45,6 +52,7 @@ class ProfileController extends Controller
 
         $user->name = $data['name'];
         $user->email = $data['email'];
+        $user->about = $data['about'];
         $user->password = Hash::make($data['password']);
 
         $user->save();

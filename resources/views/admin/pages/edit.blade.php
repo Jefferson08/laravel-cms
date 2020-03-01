@@ -70,8 +70,32 @@
         '{{asset('assets/css/content.css')}}'
       ],
       images_upload_url:'{{route('image_upload')}}',
-      images_upload_credentials:true,
-      convert_urls: false
+      convert_urls: false,
+      images_upload_handler: function (blobInfo, success, failure) {
+           var xhr, formData;
+           xhr = new XMLHttpRequest();
+           xhr.withCredentials = false;
+           xhr.open('POST', '/api/upload');
+           var token = '{{ csrf_token() }}';
+           xhr.setRequestHeader("X-CSRF-Token", token);
+           xhr.onload = function() {
+               var json;
+               if (xhr.status != 200) {
+                   failure('HTTP Error: ' + xhr.status);
+                   return;
+               }
+               json = JSON.parse(xhr.responseText);
+
+               if (!json || typeof json.location != 'string') {
+                   failure('Invalid JSON: ' + xhr.responseText);
+                   return;
+               }
+               success(json.location);
+           };
+           formData = new FormData();
+           formData.append('file', blobInfo.blob(), blobInfo.filename());
+           xhr.send(formData);
+       }
     });
   </script>
 @endsection

@@ -31,5 +31,6 @@ Route::namespace('Admin')->prefix('painel')->name('painel.')->group(function () 
     Route::get('settings', 'SettingsController@index')->name('settings');
     Route::put('settings', 'SettingsController@save')->name('settings.update');
 
-
 });
+
+Route::fallback('PageController@index');

@@ -35,7 +35,7 @@
                     <td style="vertical-align: middle;">{{$page->title}}</td>
                     <td style="vertical-align: middle;">
                         <div class="row" style="margin: 0;">
-                            <a class="btn btn-success" href=""><i class="fa fa-eye"></i>  Ver</a>
+                            <a class="btn btn-success" href="{{url($page->slug)}}"><i class="fa fa-eye"></i>  Ver</a>
                             <a class="btn btn-info" href="{{ route('painel.pages.edit', $page)}}" style="margin-left:10px;"><i class="fa fa-edit"></i>  Editar</a>
                             @can('edit-users')
                             <form method="POST" action="{{ route('painel.pages.destroy', $page)}}">

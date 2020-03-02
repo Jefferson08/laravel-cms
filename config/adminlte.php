@@ -140,11 +140,11 @@ return [
 
     'login_url' => 'login',
 
-    'register_url' => 'register',
+    'register_url' => null,
 
-    'password_reset_url' => 'password/reset',
+    'password_reset_url' => null,
 
-    'password_email_url' => 'password/email',
+    'password_email_url' => null,
 
     /*
     |--------------------------------------------------------------------------
@@ -301,7 +301,7 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                    'location' => env('APP_URL').'vendor/chart.js/Chart.min.js',
                 ],
             ],
         ],

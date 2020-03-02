@@ -9,6 +9,11 @@ class PageController extends Controller
 {
     public function index($slug){
         $page = Page::where('slug', $slug)->first();
-        return view('page')->with('page', $page);
+
+        if($page){
+            return view('page')->with('page', $page);
+        } 
+
+        return abort(404);
     }
 }

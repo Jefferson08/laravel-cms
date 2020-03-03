@@ -10,6 +10,12 @@
 
 @section('css')
 <link rel="shortcut icon" href="{{ asset('assets/img/Fevicon.png') }}" />
+
+<style>
+    .table td .row{
+        flex-wrap: nowrap;
+    }
+</style>
 @stop
 
 @section('content')
@@ -24,7 +30,7 @@
 
 <div class="card">
     <div class="card-body">
-        <table class="table table-hover">
+        <table class="table table-hover table-responsive">
             <thead>
                 <tr>
                     <th style="width: 10%;">ID</th>

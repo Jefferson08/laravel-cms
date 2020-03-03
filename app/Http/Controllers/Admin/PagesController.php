@@ -31,7 +31,6 @@ class PagesController extends Controller
      */
     public function create()
     {
-        dd(Auth::user());
         return view('admin.pages.create');
     }
 

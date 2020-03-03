@@ -7,6 +7,10 @@
     <hr>
 @endsection
 
+@section('css')
+<link rel="shortcut icon" href="{{ asset('assets/img/Fevicon.png') }}" />
+@stop
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 @section('content')

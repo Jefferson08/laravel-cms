@@ -68,41 +68,29 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-2 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
-                <h4>Top Products</h4>
-                <ul>
-                    <li><a href="#">Managed Website</a></li>
-                    <li><a href="#">Manage Reputation</a></li>
-                    <li><a href="#">Power Tools</a></li>
-                    <li><a href="#">Marketing Service</a></li>
-                </ul>
-            </div>
-            <div class="col-xl-2 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#">Jobs</a></li>
-                    <li><a href="#">Brand Assets</a></li>
-                    <li><a href="#">Investor Relations</a></li>
-                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="{{route('home')}}">Home</a></li>
+                    <li><a href="{{route('contact')}}">Contact</a></li>
                 </ul>
             </div>
-            <div class="col-xl-2 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
-                <h4>Features</h4>
-                <ul>
-                    <li><a href="#">Jobs</a></li>
-                    <li><a href="#">Brand Assets</a></li>
-                    <li><a href="#">Investor Relations</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-            <div class="col-xl-2 col-sm-6 mb-4 mb-xl-0 single-footer-widget">
-                <h4>Resources</h4>
-                <ul>
-                    <li><a href="#">Guides</a></li>
-                    <li><a href="#">Research</a></li>
-                    <li><a href="#">Experts</a></li>
-                    <li><a href="#">Agencies</a></li>
-                </ul>
-            </div>
+            <div class="col-md-4 col-lg-3 mb-4 mb-md-0 single-footer-widget">
+              <h4>Contact information</h4>
+              <div class="media contact-info">
+              <span class="contact-info__icon"><i class="ti-headphone"></i></span>
+              <div class="media-body">
+                  <h3><a href="tel:454545654">Phone</a></h3>
+                  <p>{{$settings['phone']}}</p>
+              </div>
+              </div>
+              <div class="media contact-info">
+              <span class="contact-info__icon"><i class="ti-email"></i></span>
+              <div class="media-body">
+                  <h3>Email</h3>
+                  <p><a href="mailto:support@colorlib.com">{{$settings['email']}}</a></p>
+              </div>
+              </div>
+          </div>
             <div class="col-xl-4 col-md-8 mb-4 mb-xl-0 single-footer-widget">
                 <h4>Newsletter</h4>
                 <p>You can trust us. we only send promo offers,</p>

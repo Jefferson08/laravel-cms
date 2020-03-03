@@ -4,6 +4,16 @@
 
 @section('plugins.Chartjs', true)
 
+@section('css')
+    <style>
+        .small-box .icon {
+            display: block;
+        }
+    </style>
+
+    <link rel="shortcut icon" href="{{ asset('assets/img/Fevicon.png') }}" />
+@stop
+
 @section('content_header')
     
 <div class="container">

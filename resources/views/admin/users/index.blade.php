@@ -8,6 +8,10 @@
     <a class="btn btn-success"href="{{ route('painel.users.create')}}"><i class="fa fa-plus"></i>  Adicionar Usuário</a>
 @endsection
 
+@section('css')
+<link rel="shortcut icon" href="{{ asset('assets/img/Fevicon.png') }}" />
+@stop
+
 @section('content')
 
 @if (session('success'))

@@ -7,6 +7,10 @@
     <hr>
 @endsection
 
+@section('css')
+<link rel="shortcut icon" href="{{ asset('assets/img/Fevicon.png') }}" />
+@stop
+
 @section('content')
 
 @if ($errors->any())
@@ -32,7 +36,7 @@
         </div>
         <div class="form-group">
           <label for="description">Descrição:</label>
-          <input type="text" name="description" maxlength="255" class="form-control @error('description') is-invalid @enderror"  value="{{old('description')}}" placeholder="Digite a descrição da página">
+          <textarea name="description" cols="20" rows="5" maxlength="255" class="form-control @error('description') is-invalid @enderror" placeholder="Digite a descrição da página">{{old('description')}}</textarea>
           @error('description')
           <p class="text-danger">{{$message}}</p>
           @enderror
@@ -67,7 +71,32 @@
       ],
       images_upload_url:'{{route('image_upload')}}',
       images_upload_credentials:true,
-      convert_urls: false
+      convert_urls: false,
+      images_upload_handler: function (blobInfo, success, failure) {
+           var xhr, formData;
+           xhr = new XMLHttpRequest();
+           xhr.withCredentials = false;
+           xhr.open('POST', '/api/upload');
+           var token = '{{ csrf_token() }}';
+           xhr.setRequestHeader("X-CSRF-Token", token);
+           xhr.onload = function() {
+               var json;
+               if (xhr.status != 200) {
+                   failure('HTTP Error: ' + xhr.status);
+                   return;
+               }
+               json = JSON.parse(xhr.responseText);
+
+               if (!json || typeof json.location != 'string') {
+                   failure('Invalid JSON: ' + xhr.responseText);
+                   return;
+               }
+               success(json.location);
+           };
+           formData = new FormData();
+           formData.append('file', blobInfo.blob(), blobInfo.filename());
+           xhr.send(formData);
+       }
     });
   </script>
 @endsection

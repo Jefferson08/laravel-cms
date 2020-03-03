@@ -7,6 +7,10 @@
     <hr>
 @endsection
 
+@section('css')
+<link rel="shortcut icon" href="{{ asset('assets/img/Fevicon.png') }}" />
+@stop
+
 @section('content')
 
 @if ($errors->any())
@@ -36,7 +40,7 @@
         </div>
         <div class="form-group">
           <label for="description">Descrição:</label>
-          <input type="text" name="description" maxlength="255" class="form-control @error('description') is-invalid @enderror"  value="{{$page['description']}}" placeholder="Digite a descrição da página">
+          <textarea name="description" cols="20" rows="5" maxlength="255" class="form-control @error('description') is-invalid @enderror" placeholder="Digite a descrição da página">{{$page->description}}</textarea>
           @error('description')
           <p class="text-danger">{{$message}}</p>
           @enderror

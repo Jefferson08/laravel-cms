@@ -91,7 +91,7 @@ return [
     */
 
     'sidebar_mini' => true,
-    'sidebar_collapse' => false,
+    'sidebar_collapse' => true,
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
@@ -173,11 +173,6 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
         [
             'text' => 'blog',
             'url'  => 'admin/blog',

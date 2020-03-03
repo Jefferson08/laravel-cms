@@ -7,6 +7,10 @@
     <hr>
 @endsection
 
+@section('css')
+<link rel="shortcut icon" href="{{ asset('assets/img/Fevicon.png') }}" />
+@stop
+
 @section('content')
 
 @if ($errors->any())

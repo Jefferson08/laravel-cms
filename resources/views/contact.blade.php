@@ -77,7 +77,7 @@
             </div>
         </div>
         <div class="col-md-8 col-lg-9">
-            <form action="#/" class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+            <form action="" class="form-contact contact_form" id="contactForm" novalidate="novalidate">
             <div class="row">
                 <div class="col-lg-5">
                 <div class="form-group">
@@ -97,7 +97,7 @@
                 </div>
             </div>
             <div class="form-group text-center text-md-right mt-3">
-                <button type="submit" class="button button-contactForm">Send Message</button>
+                <button class="button button-contactForm">Send Message</button>
             </div>
             </form>
         </div>

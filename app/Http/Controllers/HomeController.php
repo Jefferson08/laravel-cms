@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Page;
 use App\User;
+use App\Visitor;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,8 +24,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        Visitor::create([
+            'page' => 'home',
+            'ip' => $request->ip(),
+            'date_access' => now()
+        ]);
 
         $data = [];
 
@@ -37,8 +44,14 @@ class HomeController extends Controller
         return view('home')->with($data);
     }
 
-    public function contact()
+    public function contact(Request $request)
     {
+        Visitor::create([
+            'page' => 'contact',
+            'ip' => $request->ip(),
+            'date_access' => now()
+        ]);
+
         return view('contact');
     }
 }

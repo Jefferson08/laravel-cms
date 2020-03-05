@@ -18,4 +18,5 @@ Route::middleware('auth:web')->get('/user', function (Request $request) {
 });
 
 Route::post('upload', 'Admin\UploadController@upload')->name('image_upload');
-Route::post('upload_profile', 'Admin\UploadController@upload_profile')->name('profile_upload')->middleware('auth');
+Route::post('delete_img', 'Admin\UploadController@delete_img')->name('image_upload');
+Route::post('upload_profile', 'Admin\UploadController@upload_profile')->name('profile_upload');

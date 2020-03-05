@@ -58,5 +58,20 @@ class UploadController extends Controller
         ];
     }
 
+    public function delete_img(Request $request)
+    {
+
+        $pieces = explode('/', $request->input('location'));
+
+        if($request->filled('location')){
+            if(file_exists(public_path('/media/images/').end($pieces))){
+                unlink(public_path('/media/images/').end($pieces));
+                return response('OK', 200);
+            }
+        }
+        
+        return response('', 200);
+    }
+
 
 }

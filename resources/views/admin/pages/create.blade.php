@@ -96,7 +96,42 @@
            formData = new FormData();
            formData.append('file', blobInfo.blob(), blobInfo.filename());
            xhr.send(formData);
-       }
+       },
+       init_instance_callback: function(editor) {
+          
+          editor.on('ObjectSelected', function(event) {
+            
+            if(event.target.nodeName == "IMG"){
+
+                editor.on('keydown', function(e) {
+                    
+                    if(e.keyCode == 8 || e.keyCode == 46){
+                      
+                        formData = new FormData();
+                        formData.append('location', event.target.src);
+
+                        var token = '{{ csrf_token() }}';
+
+                        $.ajaxSetup({
+                            headers: {
+                              'X-CSRF-Token': token
+                            }
+                        });
+                        $.ajax({
+                            url: '/api/delete_img',
+                            processData: false,
+                            contentType: false,
+                            type: 'POST',
+                            data: formData
+                        });
+                       
+                    }
+
+                    editor.off('keydown');
+                });
+            }
+          });
+        }
     });
   </script>
 @endsection

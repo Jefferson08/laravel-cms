@@ -47,7 +47,7 @@
         </div>
         <div class="form-group">
           <label for="body">Corpo:</label>
-          <textarea name="body" class="form-control bodyfield @error('body') is-invalid @enderror" placeholder="Digite o corpo" cols="30" rows="10">{{$page->body}}</textarea>
+          <textarea id="tiny_text_area" name="body" class="form-control bodyfield @error('body') is-invalid @enderror" placeholder="Digite o corpo" cols="30" rows="10">{{$page->body}}</textarea>
           @error('body')
           <p class="text-danger">{{$message}}</p>
           @enderror
@@ -99,7 +99,42 @@
            formData = new FormData();
            formData.append('file', blobInfo.blob(), blobInfo.filename());
            xhr.send(formData);
-       }
+       },
+       init_instance_callback: function(editor) {
+          
+          editor.on('ObjectSelected', function(event) {
+            
+            if(event.target.nodeName == "IMG"){
+
+                editor.on('keydown', function(e) {
+                    
+                    if(e.keyCode == 8 || e.keyCode == 46){
+                      
+                        formData = new FormData();
+                        formData.append('location', event.target.src);
+
+                        var token = '{{ csrf_token() }}';
+
+                        $.ajaxSetup({
+                            headers: {
+                              'X-CSRF-Token': token
+                            }
+                        });
+                        $.ajax({
+                            url: '/api/delete_img',
+                            processData: false,
+                            contentType: false,
+                            type: 'POST',
+                            data: formData
+                        });
+                       
+                    }
+
+                    editor.off('keydown');
+                });
+            }
+          });
+        }
     });
   </script>
 @endsection

@@ -132,7 +132,10 @@ class UsersController extends Controller
 
         $user->name = $data['name'];
         $user->email = $data['email'];
-        $user->password = Hash::make($data['password']);
+        
+        if($data['password']){
+            $user->password = Hash::make($data['password']);
+        }
 
         $user->save();
 
